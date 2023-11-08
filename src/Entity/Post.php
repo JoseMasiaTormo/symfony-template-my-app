@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\PortfolioItemRepository;
+use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: PortfolioItemRepository::class)]
-class PortfolioItem
+#[ORM\Entity(repositoryClass: PostRepository::class)]
+class Post
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -17,10 +17,10 @@ class PortfolioItem
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $image = null;
+    private ?string $description = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $description = null;
+    private ?string $file = null;
 
     public function getId(): ?int
     {
@@ -39,18 +39,6 @@ class PortfolioItem
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
-
-    public function setImage(string $image): static
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -59,6 +47,18 @@ class PortfolioItem
     public function setDescription(string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
+
+    public function setFile(string $file): static
+    {
+        $this->file = $file;
 
         return $this;
     }
