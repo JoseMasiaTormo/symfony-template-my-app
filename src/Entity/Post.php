@@ -22,6 +22,9 @@ class Post
     #[ORM\Column(length: 255)]
     private ?string $file = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Post
     public function setFile(string $file): static
     {
         $this->file = $file;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
