@@ -19,7 +19,7 @@ class PostFormType extends AbstractType
             ->add('description')
             ->add('file', FileType::class, [
                 'mapped' => false,
-                'constraits' => [
+                'constraints' => [
                     new File([
                         'mimeTypes' => [
                             'image/jpeg',

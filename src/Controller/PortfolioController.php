@@ -18,24 +18,29 @@ class PortfolioController extends AbstractController
 {
     use TargetPathTrait;
     #[Route('/portfolio', name: 'app_portfolio')]
-    public function index(SessionInterface $session, string $firewallName = 'main'): Response
+    public function index(ManagerRegistry $doctrine, SessionInterface $session, string $firewallName = 'main'): Response
     {
         $link = $this->generateUrl('app_portfolio');
         $this->saveTargetPath($session, $firewallName, $link);
         $this->denyAccessUnlessGranted('ROLE_USER');
 
+        $postRepository = $doctrine->getRepository(Post::class);
+        $posts = $postRepository->findAll();
+
         return $this->render('page/port.html.twig', [
             'controller_name' => 'PortfolioController',
+            'posts' => $posts,
         ]);
     }
 
     #[Route('/new', name: 'app_new')]
     public function newPost(ManagerRegistry $doctrine, Request $request, SessionInterface $session, SluggerInterface $slugger, string $firewallName = 'main'): Response
     {
-        $link = $this->generateUrl('app_portfolio');
+        $link = $this->generateUrl('app_new');
         $this->saveTargetPath($session, $firewallName, $link);
         $this->denyAccessUnlessGranted('ROLE_USER');
 
+        $post = new Post();
         $form = $this->createForm(PostFormType::class, $post);
         $form->handleRequest($request);
 
@@ -63,7 +68,7 @@ class PortfolioController extends AbstractController
                 $entityManager = $doctrine->getManager();
                 $entityManager->persist($post);
                 $entityManager->flush();
-                return $this->redirectToRoute('app_blog');
+                return $this->redirectToRoute('app_portfolio');
             }
         return $this->render('new.html.twig', array(
             'form' => $form->createView()

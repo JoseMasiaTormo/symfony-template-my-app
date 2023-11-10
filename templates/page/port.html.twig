@@ -148,12 +148,26 @@
               </div>
             </div><!-- End Portfolio Item -->
 
+            {% if posts %}
+              {% for post in posts %}
+              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-branding">
+                <img src="{{ asset('images/' ~ post.file) }}" class="img-fluid">
+                <div class="portfolio-info">
+                  <h4>{{ post.title }}</h4>
+                  <p>{{ post.description }}</p>
+                  <a href="{{ asset('images/' ~ post.file) }}" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                </div>
+              </div>
+              {% endfor %}
+            {% else %}
+              <p>No hay nuevos posts</p>
+            {% endif %}
           </div><!-- End Portfolio Container -->
 
         </div>
 
       </div>
-      <a class="btn-getstarted" href="{{ path('app_about')}}">Get Started</a>
+      <a class="btn-getstarted btn-addimg mt-5" href="{{ path('app_new')}}">Añadir Imagen</a>
 
     </section><!-- End Portfolio Section -->
     <!-- Pricing Section - Home Page -->

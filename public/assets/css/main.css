@@ -210,6 +210,25 @@ section {
   background: rgba(var(--primary-color-rgb), 0.85);
 }
 
+/* Estilo para el botón btn-addimg */
+.btn-addimg {
+  display: block;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--contrast-color);
+  font-size: 14px;
+  padding: 8px 26px;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.btn-addimg:hover {
+  color: white;
+}
+
+
 @media (max-width: 1200px) {
   .header .logo {
     order: 1;

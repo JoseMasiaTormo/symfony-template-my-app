@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nuevo Post{% endblock %}
+{% block body %}
+    <div class="container mt-5 mb-5">
+        <h1>Nuevo Post</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.title, {'attr': {'class': 'form-control mb-3'}}) }}
+        {{ form_row(form.description, {'attr': {'class': 'form-control mb-3'}}) }}
+        {{ form_row(form.file, {'attr': {'class': 'form-control mb-3'}}) }}
+
+        {# Puedes agregar más campos aquí según sea necesario #}
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}
