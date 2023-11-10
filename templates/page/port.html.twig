@@ -167,7 +167,9 @@
         </div>
 
       </div>
-      <a class="btn-getstarted btn-addimg mt-5" href="{{ path('app_new')}}">Añadir Imagen</a>
+      {% if is_granted("ROLE_ADMIN") %}
+        <a class="btn-getstarted btn-addimg mt-5" href="{{ path('app_new')}}">Añadir Imagen</a>
+      {% endif %}
 
     </section><!-- End Portfolio Section -->
     <!-- Pricing Section - Home Page -->
