@@ -13,7 +13,7 @@
 
             {% if app.user %}
                 <div class="mb-3">
-                    Has iniciado sesión como {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    Has iniciado sesión como {{ app.user.email }}, <a href="{{ path('app_logout') }}">Logout</a>
                 </div>
             {% endif %}
 
